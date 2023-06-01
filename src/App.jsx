@@ -2,13 +2,12 @@ import SignUpPage from './Pages/Signup'
 import GamesListPage from './Pages/GamesList'
 import GameDetailsPage from './Pages/GameDetails'
 import HomePage from './Pages/Homepage'
-/* import LoginPage from './Pages/Login';
- */
+import LoginPage from './Pages/Login';
+
 import './App.css'
 import { Routes, Route} from 'react-router-dom';
 import NavBar from './Components/Navbar'
 import SideNav from './Components/SideNav'
-import LoginPage from './Pages/Login/index.jsx';
 
 
 function App() {
