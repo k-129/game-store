@@ -5,10 +5,9 @@ import GamepadIcon from "../../assets/images/gamepad-svgrepo-com.svg";
 export default function NavBar() {
   return (
     <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
+      <div className="container-fluid ">
         <Link className="navbar-brand" to="/">
-          <img src={GamepadIcon} alt="Gamepad Icon" className="icon" />
-          Game Store
+          <img src={GamepadIcon} alt="Gamepad Icon" className="brand-icon" />
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

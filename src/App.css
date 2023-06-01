@@ -12,7 +12,7 @@
   margin: 0 auto;
   padding: 0rem;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 8%;
 }
 
 
@@ -59,4 +59,12 @@
   overflow-y: scroll;
   overflow-x: hidden;
 
+}
+
+.brand-icon{
+  max-width: 3rem;
+}
+
+.navbar-brand{
+  margin-left: 1rem;
 }
