@@ -21,29 +21,29 @@ class GamesService {
     });
   }
 
-  // POST /api/projects
+  // POST /api/games
   createGame = requestBody => {
-    return this.api.post('/api/games-list', requestBody);
+    return this.api.post('/api/games', requestBody);
   };
 
-  // GET /api/projects
+  // GET /api/games
   getAllGames = () => {
-    return this.api.get('/api/games-list');
+    return this.api.get('/api/games');
   };
 
-  // GET /api/projects/:id
+  // GET /api/games/:id
   getGame = id => {
-    return this.api.get(`/api/games-list/${id}`);
+    return this.api.get(`/api/games/${id}`);
   };
 
-  // PUT /api/projects/:id
+  // PUT /api/games/:id
   updateGame = (id, requestBody) => {
-    return this.api.put(`/api/games-list/${id}`, requestBody);
+    return this.api.put(`/api/games/${id}`, requestBody);
   };
 
-  // DELETE /api/projects/:id
+  // DELETE /api/games/:id
   deleteGame = id => {
-    return this.api.delete(`/api/games-list/${id}`);
+    return this.api.delete(`/api/games/${id}`);
   };
 }
 
