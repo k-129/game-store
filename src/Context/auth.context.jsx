@@ -1,50 +1,69 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import authService from '../Services/auth.service';
 
-//creates react context with shareable state data
 const AuthContext = React.createContext();
 
 function AuthProviderWrapper(props) {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
-    const storeToken = (token) =>{
-        localStorage.setItem('authToken', token)
-    }
+  const storeToken = (token) => {
+    localStorage.setItem('authToken', token);
+  };
 
-    const authenticateUser = ()=>{
-      const   storeToken = localStorage.getItem
-      ('authToken');
-      if(storeToken){
-      authService.verify()
-        .then((response)=>{
+  const removeToken = () => {
+    localStorage.removeItem('authToken');
+  };
+
+  const logoutUser = () => {
+    removeToken();
+    authenticateUser();
+  };
+
+  const getToken = () => {
+    console.log(localStorage.getItem('authToken'));
+    return localStorage.getItem('authToken');
+  };
+
+  const authenticateUser = () => {
+    const storedToken = localStorage.getItem('authToken');
+
+    if (storedToken) {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/api/verify`, {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        })
+        .then((response) => {
           setIsLoggedIn(true);
-          setLoading(false);
-          setUser(null);
+          setIsLoading(false);
+          setUser(response.data);
         })
-        .catch((error)=>{
+        .catch((err) => {
           setIsLoggedIn(false);
-          setLoading(true);
+          setIsLoading(false);
           setUser(null);
-        })
-      }else{
-        setIsLoggedIn(false);
-          setLoading(false);
-          setUser(null);
-      }
-      
+        });
+    } else {
+      setIsLoggedIn(false);
+      setIsLoading(false);
+      setUser(null);
     }
+  };
 
-    const removeToken= ()=>{
-      
-    }
+  useEffect(() => {
+    authenticateUser();
+  }, []);
+
   return (
-    <AuthContext.Provider value={{storeToken}}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logoutUser, getToken }}
+    >
       {props.children}
     </AuthContext.Provider>
-  )
+  );
 }
 
-export default {AuthContext, AuthProviderWrapper}
+export { AuthContext, AuthProviderWrapper };

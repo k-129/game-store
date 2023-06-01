@@ -2,7 +2,7 @@ import {useState, useContext} from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import authService from '../../Services/auth.service';
-import authContext from '../../Context/auth.context'
+import {AuthContext} from '../../Context/auth.context'
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -11,7 +11,8 @@ export default function LoginPage() {
 
     const navigate = useNavigate();
 
-    const {storeToken} = useContext(authContext);
+
+    const { storeToken, authenticateUser } = useContext(AuthContext);
 
     
     const handleEmail = (e) =>{setEmail(e.target.value)};
@@ -25,6 +26,7 @@ export default function LoginPage() {
         authService.login(requestBody)
           .then((response)=>{
             storeToken(response.data.authToken)
+            navigate("/")
           })
           .catch((error)=>{
             const errorDescription = error.response.data.message;

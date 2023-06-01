@@ -38,6 +38,11 @@ class AuthService {
     // same as
     // return axios.post("http://localhost:5005/auth/verify");
   };
+  profile = () => {
+    return this.api.post('/api/profile');
+    // same as
+    // return axios.post("http://localhost:5005/auth/verify");
+  };
 }
  
 // Create one instance object
