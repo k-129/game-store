@@ -8,6 +8,7 @@ import './App.css'
 import { Routes, Route} from 'react-router-dom';
 import NavBar from './Components/Navbar'
 import SideNav from './Components/SideNav'
+import LoginPage from './Pages/Login/index.jsx';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path="/games" element={<GamesListPage/>} />
       <Route path="/games/:gameId" element={<GameDetailsPage/>}/>
       <Route path="/signup" element={<SignUpPage/>}/>
+      <Route path="/login" element={<LoginPage/>} />
     </Routes>
     </div>
   )
