@@ -1,3 +1,4 @@
+import SignUpPage from './Pages/Signup'
 import GamesListPage from './Pages/GamesList'
 import GameDetailsPage from './Pages/GameDetails'
 import HomePage from './Pages/Homepage'
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" element={<HomePage/>} />
       <Route path="/games" element={<GamesListPage/>} />
       <Route path="/games/:gameId" element={<GameDetailsPage/>}/>
+      <Route path="/signup" element={<SignUpPage/>}/>
     </Routes>
     </div>
   )

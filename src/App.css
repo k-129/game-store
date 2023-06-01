@@ -1,3 +1,12 @@
+:root{
+  --bg-color:#FDFDFD;
+  --text:#404040;
+  --heading:#0A2C4E;
+  --buttons:#DAA520;
+  --decorative:#DAA520;
+}
+
+
 #root {
   max-width: 100%;
   margin: 0 auto;
