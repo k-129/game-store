@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 :root{
   --bg-color:#FDFDFD;
   --text:#404040;
   --heading:#0A2C4E;
   --buttons:#DAA520;
   --decorative:#DAA520;
+  --main-font: Bangers;
 }
 
 
@@ -13,15 +16,21 @@
   padding: 0rem;
   text-align: center;
   margin-top: 8%;
-}
+/*   background-color: var(--heading);
+ */}
 
 
 .thumbnail{
   max-width: 25rem;
 }
 
+.card{
+  background-color: var(--decorative);
+  border-color: var(--decorative);
+}
 .title{
   font-size: 1rem;
+  color: var(--heading);
 }
 
 
@@ -67,4 +76,56 @@
 
 .navbar-brand{
   margin-left: 1rem;
+}
+
+.placeholders{
+  min-width: 300px;
+  height: 200px;
+}
+
+.filter-nav{
+  width: 100%;
+  height: 2rem;
+}
+.filter-list{
+  height: 2.5rem;
+}
+
+.selects{
+  margin-left: 3.5rem;
+  max-width: 50rem;
+  width: 100%;
+  display: flex;
+}
+.genres, .platforms{
+    margin-right: 1rem;
+
+}
+.publishers{
+  margin-left: 1rem;
+}
+
+.nav-title{
+  font-family: var(--main-font);
+}
+
+.navbar{
+  padding: 0;
+}
+
+.profile-link{
+  display: absolute;
+  translate: 20rem;
+}
+
+@media only screen and (max-width: 990px) and (min-width: 320px)  {
+  .profile-link{
+    display: absolute;
+    translate: 0rem;
+  }
+  .profile-icon{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
 }

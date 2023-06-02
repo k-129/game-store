@@ -1,56 +1,123 @@
-import {useParams, Link} from "react-router-dom";
 import {useState, useEffect} from 'react';
-import axios from "axios";
+import {useParams, useNavigate, Link} from 'react-router-dom';
+import gameService from '../../Services/games.service';
 
-export default function EditGameDetailsPage(props) {
-  //write State
-  // 1) Store the specific Project inside State
-  const [gameDetails, setGameDetails] = useState("");
-   
-  // Same as Express -> const {gameId} = req.params;
-  const {gameId} = useParams();
+function EditProjectPage() {
+    // Write State 
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [genre, setGenre] = useState("");
+    const [publisher, setPublisher] = useState("");
+    const [platform, setPlatform] = useState("");
+    const [developer, setDeveloper] = useState("");
 
+    const {gameId} = useParams();
 
-const gameInfo = async () => {
-  try {
-    const response = await axios.get(`http://localhost:5005/api/games/${gameId}`)
-  setGameDetails(response.data)
-  console.log(response.data)
-  } catch (error) {
-    console.log(error)
-  }
-}
+    const navigate = useNavigate();
 
+    // Have a Side-Effect after initial rendering of component
+    useEffect(()=>{
+        gameService.getGame(gameId)
+        .then((response)=>{
+            const oneGame = response.data; 
+            setTitle(oneGame.title);
+            setDescription(oneGame.short_description);
+            setGenre(oneGame.genre);
+            setPublisher(oneGame.publisher);
+            setPlatform(oneGame.platform);
+            setDeveloper(oneGame.developer);
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
 
-  // Destructuring
-  const {gamesProp} = props;
+    }, [gameId]);
 
-  useEffect(()=>{
-    // Find the game with the id that matches Route Params
-    
+    // Create a function that Handles Form Submit 
+    const handleFormSubmit = (e)=>{
+        // prevent the default action of the form => refreshing the page
+        e.preventDefault();
 
-    // Store it into state, in order to persist Updates
-    gameInfo();
+      
+        const requestBody = {title, description, genre, publisher, platform, developer};      
 
-  }, [])
+        // make a PUT request to update the project
+       gameService.updateGame(gameId, requestBody)
+             .then(()=>{
+                navigate(`/games/${gameId}`)
+             })
+             .catch((error)=>{
+                console.log(error)
+             })
+    }
+
+    // Create a delete project function 
+    const deleteGame = () => {
+        gameService.deleteGame(gameId)
+        .then(()=>{
+            navigate('/games');
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
 
   return (
-    <div>
-        {gameDetails && (
-            <div>
-                <h2>{gameDetails.title}</h2>
-                <img src={gameDetails.thumbnail}/>
-                <p>{gameDetails.short_description}</p>
-                <Link to="/games">Back</Link>
-            </div>
+    <div className="edit-project-page">
+    <h3>Edit the Project</h3>
 
-            /* project? (<div>
-                <h2>{project.name}</h2>
-                <h3>Tech Stack: {project.technologies}</h3>
-                <p>{project.description}</p>
-                <Link to="/projects">Back</Link>
-            </div>) : null */
-        )}
-    </div>
+    <form onSubmit={handleFormSubmit}>
+      <label>Title:</label>
+      <input
+        type="text"
+        name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <label>Description:</label>
+      <textarea
+        name="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+
+      <label>genre:</label>
+      <input
+        type="text"
+        name="genre"
+        value={genre}
+        onChange={(e) => setGenre(e.target.value)}
+      />
+      <label>publisher:</label>
+      <input
+        type="text"
+        name="publisher"
+        value={publisher}
+        onChange={(e) => setPublisher(e.target.value)}
+      />
+      <label>Platform:</label>
+      <input
+        type="text"
+        name="platform"
+        value={platform}
+        onChange={(e) => setPlatform(e.target.value)}
+      />
+      <label>Developer:</label>
+      <input
+        type="text"
+        name="developer"
+        value={developer}
+        onChange={(e) => setDeveloper(e.target.value)}
+      />
+      
+
+      <button type="submit">Edit</button>
+    </form>
+    <button onClick={deleteGame}>Delete Project</button>
+    <Link to={`/games/${gameId}`}>Edit Game</Link>
+
+  </div>    
   )
 }
+
+export default EditProjectPage

@@ -5,7 +5,7 @@ import axios from 'axios';
 class GamesService {
   constructor() {
     this.api = axios.create({
-      baseURL: import.meta.env.VITE_APP_SERVER_URL || 'http://localhost:5005'
+      baseURL: import.meta.env.VITE_REACT_APP_API_URL 
     });
 
     // Automatically set JWT token in the headers for every request
@@ -23,7 +23,7 @@ class GamesService {
 
   // POST /api/games
   createGame = requestBody => {
-    return this.api.post('/api/games', requestBody);
+    return this.api.post('/api/add-game', requestBody);
   };
 
   // GET /api/games
@@ -36,9 +36,10 @@ class GamesService {
     return this.api.get(`/api/games/${id}`);
   };
 
-  // PUT /api/games/:id
+
+  // PUT 
   updateGame = (id, requestBody) => {
-    return this.api.put(`/api/games/${id}`, requestBody);
+    return this.api.put(`/api/games/edit/${id}`, requestBody);
   };
 
   // DELETE /api/games/:id

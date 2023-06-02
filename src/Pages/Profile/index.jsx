@@ -1,5 +1,11 @@
+import {Link, useParams} from 'react-router-dom';
+import {useContext, useState, useNavigate} from 'react'; 
+import { AuthContext } from '../../Context/auth.context';
 
 export default function ProfilePage() {
+    const { userId } = useParams();
+    const {isLoggedIn, user, logoutUser} = useContext(AuthContext);
+
   return (
     <div className="profile">
         <aside className="profile-info">
@@ -10,8 +16,8 @@ export default function ProfilePage() {
                 <p className="about-me">About Me</p>
             </div>
             <div className="user-links">
-                <p>Edit Profile</p>
-                <p>Logout</p>
+                <Link to={`/profile/edit/${user._id}`}>Edit</Link>
+                <button onClick={logoutUser}>Logout</button>
             </div>
         </aside>
 

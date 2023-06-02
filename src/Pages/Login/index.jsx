@@ -26,10 +26,11 @@ export default function LoginPage() {
         authService.login(requestBody)
           .then((response)=>{
             storeToken(response.data.authToken)
+            authenticateUser()
             navigate("/")
           })
           .catch((error)=>{
-            const errorDescription = error.response.data.message;
+            const errorDescription = error;
             setErrorMessage(errorDescription);
           })
     }

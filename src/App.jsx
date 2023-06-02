@@ -1,3 +1,5 @@
+
+
 import HomePage from './Pages/Homepage'
 
 import SignUpPage from './Pages/Signup'
@@ -20,6 +22,8 @@ import { Routes, Route} from 'react-router-dom';
 
 function App() {
 
+
+
   return (
     <div>
     <NavBar/>
@@ -34,8 +38,8 @@ function App() {
       <Route path="/signup" element={<IsAnon><SignUpPage/></IsAnon>}/>
       <Route path="/login" element={<IsAnon><LoginPage/></IsAnon>} />
 
-      <Route path="/profile" element={<IsPrivate><ProfilePage/></IsPrivate>} />
-      <Route path="/edit-profile" element={<IsPrivate><EditProfilePage/></IsPrivate>} />
+      <Route path="/profile/:userId" element={<IsPrivate><ProfilePage/></IsPrivate>} />
+      <Route path="/profile/edit/:userId" element={<IsPrivate><EditProfilePage/></IsPrivate>} />
 
     </Routes>
     </div>

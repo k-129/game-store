@@ -1,31 +1,87 @@
-import {Link} from 'react-router-dom'
-export default function Nav() {
+import { useState, useEffect } from "react";
+import gamesService from '../../Services/games.service';
+
+export default function Nav(props) {
+  const {setPublisher, setPlatform, setGenre} = props
+
+  const [genres, setGenres] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
+  const [publishers, setPublishers] = useState([]);
+
+
+
+  const getAllGenres = () => {
+    gamesService
+      .getAllGames()
+      .then((response) => {
+        const uniqueGenres = [...new Set(response.data.map((game) => game.genre))];
+        setGenres(uniqueGenres.sort());
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const getAllPlatforms = () => {
+    gamesService
+      .getAllGames()
+      .then((response) => {
+        const uniquePlatforms = [...new Set(response.data.map((game) => game.platform))];
+        setPlatforms(uniquePlatforms);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const getAllPublishers = () => {
+    gamesService
+      .getAllGames()
+      .then((response) => {
+        const uniquePublishers = [...new Set(response.data.map((game) => game.publisher))];
+        setPublishers(uniquePublishers.sort());
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getAllGenres();
+    getAllPlatforms();
+    getAllPublishers();
+  }, []);
+
   return (
-    <div>
-    <ul class="nav border">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li className="nav-item dropdown">
-              <Link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown link
-              </Link>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/">Action</Link></li>
-                <li><Link className="dropdown-item" to="/">Another action</Link></li>
-                <li><Link className="dropdown-item" to="/">Something else here</Link></li>
-              </ul>
-            </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-        </li>
-    </ul>
-</div>
-  )
+    <div className="filter-nav">
+      <ul className="nav border filter-list">
+        <div className="selects">
+          <div className="genres">
+            <select onChange={(e)=>setGenre(e.target.value)} name="genres" id="genres" className="btn border">
+              <option value="" >All Genres</option>
+              {genres.map((genre) => (
+                <option key={genre} value={genre}>
+                  {genre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="platforms">
+            <select onChange={(e)=>setPlatform(e.target.value)} name="platforms" id="platforms" className="btn border">
+              <option value="">All Platforms</option>
+              {platforms.map((platform) => (
+                <option key={platform} value={platform}>
+                  {platform}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="publishers">
+            <select onChange={(e)=>setPublisher(e.target.value)} name="publishers" id="publishers" className="btn border">
+              <option value="">All Publishers</option>
+              {publishers.map((publisher) => (
+                <option key={publisher} value={publisher}>
+                  {publisher}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </ul>
+    </div>
+  );
 }

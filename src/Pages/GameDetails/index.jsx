@@ -42,14 +42,8 @@ const gameInfo = async () => {
                 <img src={gameDetails.thumbnail}/>
                 <p>{gameDetails.short_description}</p>
                 <Link to="/games">Back</Link>
+                <Link to={`/games/edit/${gameId}`}>Edit Game</Link>
             </div>
-
-            /* project? (<div>
-                <h2>{project.name}</h2>
-                <h3>Tech Stack: {project.technologies}</h3>
-                <p>{project.description}</p>
-                <Link to="/projects">Back</Link>
-            </div>) : null */
         )}
     </div>
   )
