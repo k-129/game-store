@@ -23,29 +23,22 @@ class AuthService {
  
   login = (requestBody) => {
     return this.api.post('/api/login', requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/login");
   };
  
   signup = (requestBody) => {
     return this.api.post('/api/signup', requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/singup");
   };
- 
+ profile = id => {
+    return this.api.get(`/api/profile/${id}`);
+  };
+  editProfile = (id, requestBody) => {
+    return this.api.put(`/api/profile/edit/${id}`, requestBody);
+  };
+
   verify = () => {
     return this.api.get('/api/verify');
-    // same as
-    // return axios.post("http://localhost:5005/auth/verify");
   };
-  profile = (userId) => {
-    return this.api.get(`/api/profile/${userId}`);
-    // same as
-    // return axios.post("http://localhost:5005/auth/verify");
-  };
-  editProfile = (userId) => {
-    return this.api.put(`/api/profile/edit/${userId}`);
-  };
+  
 }
  
 // Create one instance object
