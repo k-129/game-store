@@ -2,11 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/auth.context";
-import authService from '../../Services/auth.service';
-
+import authService from "../../Services/auth.service";
 
 function EditProfilePage() {
-  const { userId } = useParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [aboutMe, setAboutMe] = useState("");
@@ -14,14 +12,17 @@ function EditProfilePage() {
   const getToken = localStorage.getItem("authToken");
   const { logoutUser, user } = useContext(AuthContext);
 
-
   const getUser = async () => {
     try {
-      let response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/profile/edit/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      } 
+      let response = await axios.put(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/edit/${
+          user._id
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken}`,
+          },
+        }
       );
       setName(response.data.name);
       setEmail(response.data.email);
@@ -31,14 +32,17 @@ function EditProfilePage() {
     }
   };
 
-  const deleteUser = (userId) => {
-    axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/profile/edit/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${getToken}`,
-      },
-    });
+  const deleteUser = (user) => {
+    axios.delete(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/edit/${user._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getToken}`,
+        },
+      }
+    );
     logoutUser();
-    navigate('/');
+    navigate("/");
   };
 
   useEffect(() => {
@@ -57,21 +61,29 @@ function EditProfilePage() {
     setAboutMe(e.target.value);
   };
 
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    const body = {
+      name,
+      email,
+      aboutMe,
+    };
+
     axios
-      .put(`${import.meta.env.VITE_REACT_APP_API_URL}/profile/${user._id}`, body, {
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      })
+      .put(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/edit/${
+          user._id
+        }`,
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken}`,
+          },
+        }
+      )
       .then(() => {
-        
-        navigate(`/profile/${userId}`);
+        navigate(`/profile/${user._id}`);
       })
       .catch((err) => console.log(err));
   };
@@ -79,25 +91,31 @@ function EditProfilePage() {
   return (
     <div className="editProfileBody">
       <form onSubmit={handleSubmit} className="editProfileForm">
-        <h4>Edit your profile</h4>
+        <h4>Edit your profile {name}</h4>
         <div className="deleteProfileBtnDiv">
           <button
-            onClick={() => deleteUser(userId)}
-            className="deleteProfileBtn"
-          >
+            onClick={() => deleteUser(user._id)}
+            className="deleteProfileBtn">
             Delete profile
           </button>
         </div>
         <div className="editProfileFormInnerDiv">
           <div className="editProfileFormInfoDiv1">
             <label htmlFor="name">Name*:</label>
-            <input type="text" name="name" value={name} onChange={handleName} />
+            <input
+              type="text"
+              name="name"
+              value={name}
+              placeholder={name}
+              onChange={handleName}
+            />
 
             <label htmlFor="email">Email address*</label>
             <input
               type="email"
               name="email"
               value={email}
+              placeholder={email}
               onChange={handleEmail}
             />
 
@@ -107,12 +125,9 @@ function EditProfilePage() {
               cols="30"
               rows="7"
               value={aboutMe}
-              onChange={handleAboutMe}
-            ></textarea>
-
-
+              placeholder={aboutMe}
+              onChange={handleAboutMe}></textarea>
           </div>
-
         </div>
 
         <button type="submit" className="editProfileSubmitBtn">

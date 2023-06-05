@@ -7,14 +7,12 @@ import axios from 'axios';
 export default function NavBar(props) {
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
   const [userDetails, setUserDetails] = useState(null);
-  const { userId } = useParams();
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5005/api/profile/${userId}`);
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/${user._id}`);
         setUserDetails(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log('Error fetching user details:', error);      
       }
@@ -23,7 +21,7 @@ export default function NavBar(props) {
     if (isLoggedIn) {
       fetchUserDetails();
     }
-  }, [userId, isLoggedIn]);
+  }, []);
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
@@ -67,7 +65,8 @@ export default function NavBar(props) {
           </ul>
           <div className="profile-link">
             
-              <Link to={`/profile/${userId}`}>
+            { isLoggedIn ?
+              <Link to={`/profile/${user._id}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -83,7 +82,24 @@ export default function NavBar(props) {
                   />
                 </svg>
               </Link>
-            
+              :
+              <Link to={`/login`}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="black"
+                  className="bi bi-person-circle profile-icon"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                  />
+                </svg>
+              </Link>
+            }
           </div>
         </div>
       </div>

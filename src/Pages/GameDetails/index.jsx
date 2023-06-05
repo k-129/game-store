@@ -13,9 +13,8 @@ export default function GameDetailsPage(props) {
 
 const gameInfo = async () => {
   try {
-    const response = await axios.get(`http://localhost:5005/api/games/${gameId}`)
+    const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/api/games/${gameId}`)
   setGameDetails(response.data)
-  console.log(response.data)
   } catch (error) {
     console.log(error)
   }

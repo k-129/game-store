@@ -4,14 +4,13 @@ import { AuthContext } from '../../Context/auth.context';
 import axios from 'axios';
 
 export default function ProfilePage() {
-  const { userId } = useParams();
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:5005/api/profile/${userId}`);
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/${user._id}`);
         setUserInfo(response.data);
       } catch (error) {
         console.log(error);
@@ -19,7 +18,7 @@ export default function ProfilePage() {
     };
 
     fetchUser();
-  }, [userId]);
+  }, []);
 
   if (!userInfo) {
     return <div>Loading...</div>;
