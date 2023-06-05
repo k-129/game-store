@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useParams, useNavigate, Link} from 'react-router-dom';
-import gameService from '../../Services/games.service';
+import ironGamesService from '../../Services/ironGames.service';
 
-function EditProjectPage() {
+function IronEditGamePage() {
     // Write State 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -17,7 +17,7 @@ function EditProjectPage() {
 
     // Have a Side-Effect after initial rendering of component
     useEffect(()=>{
-        gameService.getGame(gameId)
+      ironGamesService.getGame(gameId)
         .then((response)=>{
             const oneGame = response.data; 
             setTitle(oneGame.title);
@@ -42,9 +42,9 @@ function EditProjectPage() {
         const requestBody = {title, description, genre, publisher, platform, developer};      
 
         // make a PUT request to update the project
-       gameService.updateGame(gameId, requestBody)
+       ironGamesService.updateGame(gameId, requestBody)
              .then(()=>{
-                navigate(`/games/${gameId}`)
+                navigate(`/ironhack/games/${gameId}`)
              })
              .catch((error)=>{
                 console.log(error)
@@ -53,9 +53,9 @@ function EditProjectPage() {
 
     // Create a delete project function 
     const deleteGame = () => {
-        gameService.deleteGame(gameId)
+        ironGamesService.deleteGame(gameId)
         .then(()=>{
-            navigate('/games');
+            navigate('/ironhack/games');
         })
         .catch((error)=>{
             console.log(error)
@@ -114,10 +114,10 @@ function EditProjectPage() {
       <button type="submit">Edit</button>
     </form>
     <button onClick={deleteGame}>Delete Game</button>
-    <Link to={`/games/${gameId}`}>Back to game</Link>
+    <Link to={`/ironhack/games/${gameId}`}>Back to game</Link>
 
   </div>    
   )
 }
 
-export default EditProjectPage
+export default IronEditGamePage

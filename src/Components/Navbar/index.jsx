@@ -23,6 +23,7 @@ export default function NavBar(props) {
     }
   }, []);
 
+
   return (
     <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -53,15 +54,18 @@ export default function NavBar(props) {
                 Games
               </Link>
             </li>
-            {isLoggedIn ? (
+            <li className="nav-item">
+              <Link className="nav-link" to="/ironhack/games">
+                Ironhack Games
+              </Link>
+            </li>
+            {user && user.admin && 
               <li className="nav-item">
                 <Link className="nav-link" to="/add-game">
                   Add Game
                 </Link>
               </li>
-            ) : (
-              <li></li>
-            )}
+            }
           </ul>
           <div className="profile-link">
             

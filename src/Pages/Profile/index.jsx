@@ -20,7 +20,7 @@ export default function ProfilePage() {
     fetchUser();
   }, []);
 
-  if (!userInfo) {
+  if (!user) {
     return <div>Loading...</div>;
   }
 
@@ -29,9 +29,9 @@ export default function ProfilePage() {
       <aside className="profile-info">
         {/* <img className="user-pic" src="" alt="profile-pic"/> */}
         <div className="user-info">
-          <h3 className="user-name">User Name: {userInfo.name}</h3>
-          <p className="user-email">User email: {userInfo.email}</p>
-          <p className="about-me">About Me: {userInfo.about_me}</p>
+          <h3 className="user-name">User Name: {user.name}</h3>
+          <p className="user-email">User email: {user.email}</p>
+          <p className="about-me">About Me: {user.about_me}</p>
         </div>
         <div className="user-links">
           <Link to={`/profile/edit/${user._id}`}>Edit</Link>

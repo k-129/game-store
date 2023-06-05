@@ -1,13 +1,13 @@
 import {useParams, Link} from "react-router-dom";
-import {useState, useEffect} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
+import { AuthContext } from '../../Context/auth.context';
+
+
 
 export default function GameDetailsPage(props) {
-  //write State
-  // 1) Store the specific Project inside State
+  const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
   const [gameDetails, setGameDetails] = useState("");
-   
-  // Same as Express -> const {gameId} = req.params;
   const {gameId} = useParams();
 
 
@@ -21,29 +21,28 @@ const gameInfo = async () => {
 }
 
 
-  // Destructuring
-  const {gamesProp} = props;
-
   useEffect(()=>{
-    // Find the game with the id that matches Route Params
-    
 
-    // Store it into state, in order to persist Updates
     gameInfo();
 
   }, [])
 
   return (
-    <div>
+    <div className="d-flex flex-column">
         {gameDetails && (
-            <div>
+            <div className='d-flex flex-column'>
                 <h2>{gameDetails.title}</h2>
                 <img src={gameDetails.thumbnail}/>
                 <p>{gameDetails.short_description}</p>
-                <Link to="/games">Back</Link>
-                <Link to={`/games/edit/${gameId}`}>Edit Game</Link>
             </div>
         )}
+                {user.admin &&
+                <Link to={`/games/edit/${gameId}`}>Edit Game</Link>
+                }
+                <Link to="/games">Back</Link>
+
+
+                
     </div>
   )
 }
