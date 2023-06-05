@@ -63,7 +63,7 @@ function IronEditGamePage() {
     }
 
   return (
-    <div className="edit-project-page d-flex justify-content-center align-items-center flex-column">
+    <div className="edit-game-page d-flex justify-content-center align-items-center flex-column">
     <h3>Edit the Game</h3>
 
     <form onSubmit={handleFormSubmit} className='d-flex flex-column'>

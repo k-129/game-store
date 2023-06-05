@@ -6,6 +6,7 @@
   --heading:#0A2C4E;
   --buttons:#DAA520;
   --decorative:#DAA520;
+  --hover: #daa520b9;
   --main-font: Bangers;
 }
 
@@ -40,7 +41,7 @@ body{
 
 
 .platform-icon{
-  width: 1.5rem;
+  max-width: 100rem;
 }
 
 .aside{
@@ -51,9 +52,9 @@ body{
 }
 
 .games-div{
-  border: 2px solid black;
+  border: 0px solid black;
   width: 100%;
-  margin-right: 0.6rem;
+  margin-right: 0.1rem;
   max-height: 1000px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -94,7 +95,27 @@ body{
   height: 2rem;
 }
 .filter-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-right: 17%;
+  margin-left: auto;
   height: 2.5rem;
+  text-align: center;
+}
+
+.genre-box{
+  background-color: var(--decorative);
+  border-color: var(--decorative);
+  color: var(--heading);
+  width: 20rem;
+  text-align: center;
+}
+
+.genre-box:is(:hover,:focus){
+  background-color: var(--hover);
+  border-color: var(--decorative);
 }
 
 .selects{
@@ -116,6 +137,14 @@ body{
   text-shadow: 2px 2px rgba(22, 32, 103, 0.387);
 }
 
+.navbar-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-right: 5rem;
+}
+
 .navbar{
   padding: 0;
   background-color: var(--decorative)!important;
@@ -124,7 +153,7 @@ body{
 
 .profile-link{
   display: absolute;
-  translate: 20rem;
+  translate: 18rem;
 }
 
 @media only screen and (max-width: 990px) and (min-width: 320px)  {
@@ -163,3 +192,4 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background: var(--buttons); 
 }
+

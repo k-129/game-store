@@ -48,10 +48,10 @@ export default function Nav(props) {
 
   return (
     <div className="filter-nav">
-      <ul className="nav border filter-list">
+      <ul className="nav filter-list">
         <div className="selects">
           <div className="genres">
-            <select onChange={(e)=>setGenre(e.target.value)} name="genres" id="genres" className="btn border">
+            <select onChange={(e)=>setGenre(e.target.value)} name="genres" id="genres" className="btn genre-box">
               <option value="" >All Genres</option>
               {genres.map((genre) => (
                 <option key={genre} value={genre}>
@@ -61,7 +61,7 @@ export default function Nav(props) {
             </select>
           </div>
           <div className="platforms">
-            <select onChange={(e)=>setPlatform(e.target.value)} name="platforms" id="platforms" className="btn border">
+            <select onChange={(e)=>setPlatform(e.target.value)} name="platforms" id="platforms" className="btn genre-box ">
               <option value="">All Platforms</option>
               {platforms.map((platform) => (
                 <option key={platform} value={platform}>
@@ -71,7 +71,7 @@ export default function Nav(props) {
             </select>
           </div>
           <div className="publishers">
-            <select onChange={(e)=>setPublisher(e.target.value)} name="publishers" id="publishers" className="btn border">
+            <select onChange={(e)=>setPublisher(e.target.value)} name="publishers" id="publishers" className="btn genre-box">
               <option value="">All Publishers</option>
               {publishers.map((publisher) => (
                 <option key={publisher} value={publisher}>

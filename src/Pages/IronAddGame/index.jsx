@@ -39,7 +39,7 @@ export default function IronAddGame(props) {
 
 
   return (
-    <div className="edit-project-page">
+    <div className="edit-game-page">
     <h3>Add New Game</h3>
 
     <form onSubmit={handleSubmit}>

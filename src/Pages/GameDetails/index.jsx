@@ -2,7 +2,7 @@ import {useParams, Link} from "react-router-dom";
 import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
 import { AuthContext } from '../../Context/auth.context';
-
+import gamesService from '../../Services/games.service';
 
 
 export default function GameDetailsPage(props) {
@@ -36,7 +36,7 @@ const gameInfo = async () => {
                 <p>{gameDetails.short_description}</p>
             </div>
         )}
-                {user.admin &&
+                {user && user.admin &&
                 <Link to={`/games/edit/${gameId}`}>Edit Game</Link>
                 }
                 <Link to="/games">Back</Link>

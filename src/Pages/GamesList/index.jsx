@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import gamesService from '../../Services/games.service';
-import SideNav from '../../Components/SideNav';
 import Nav from '../../Components/Nav';
 import '../../App.css';
 
@@ -49,9 +48,6 @@ gamesFilter()
 
   return (
     <div className="game-list-page d-flex">
-      <div>
-        <SideNav />
-      </div>
       <div className="games-div">
         <Nav setGenre={setGenre}  setPlatform={setPlatform} setPublisher={setPublisher}/>
         <div className="games-list">

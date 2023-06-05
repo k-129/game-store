@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useParams, useNavigate, Link} from 'react-router-dom';
 import gameService from '../../Services/games.service';
 
-function EditProjectPage() {
+export default function EditGameDetailsPage() {
     // Write State 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -63,7 +63,7 @@ function EditProjectPage() {
     }
 
   return (
-    <div className="edit-project-page d-flex justify-content-center align-items-center flex-column">
+    <div className="edit-game-page d-flex justify-content-center align-items-center flex-column">
     <h3>Edit the Game</h3>
 
     <form onSubmit={handleFormSubmit} className='d-flex flex-column'>
@@ -119,5 +119,3 @@ function EditProjectPage() {
   </div>    
   )
 }
-
-export default EditProjectPage
