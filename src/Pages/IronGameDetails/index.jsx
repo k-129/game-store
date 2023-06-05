@@ -5,7 +5,7 @@ import { AuthContext } from "../../Context/auth.context";
 
 export default function IronGameDetailsPage(props) {
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
-  const [gameDetails, setGameDetails] = useState("");
+  const [ironGameDetails, setIronGameDetails] = useState("");
   const { gameId } = useParams();
 
   const gameInfo = async () => {
@@ -13,7 +13,7 @@ export default function IronGameDetailsPage(props) {
       const response = await axios.get(
         `${import.meta.env.VITE_REACT_APP_API_URL}/api/ironhack/games/${gameId}`
       );
-      setGameDetails(response.data);
+      setIronGameDetails(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -25,11 +25,11 @@ export default function IronGameDetailsPage(props) {
 
   return (
     <div className="d-flex flex-column">
-      {gameDetails && (
+      {ironGameDetails && (
         <div className="d-flex flex-column">
-          <h2>{gameDetails.title}</h2>
-          <img src={gameDetails.thumbnail} />
-          <p>{gameDetails.short_description}</p>
+          <h2>{ironGameDetails.title}</h2>
+          <img src={ironGameDetails.imgUrl} />
+          <p>{ironGameDetails.description}</p>
         </div>
       )}
       {user && user.admin ? (

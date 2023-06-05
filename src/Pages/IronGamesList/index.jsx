@@ -123,7 +123,7 @@ export default function IronGamesListPage() {
             games.map((game) => (
               <div className="card d-inline-flex justify-content-center m-2 mt-5" key={game._id}>
                 <Link to={`/ironhack/games/${game._id}`}>
-                  <img src={game.thumbnail} className="card-img-top thumbnail" alt="..." />
+                  <img src={game.imgUrl} className="card-img-top thumbnail" alt="..." />
                   <div className="card-body">
                     <h5 className="card-title title">{game.title}</h5>
                   </div>
