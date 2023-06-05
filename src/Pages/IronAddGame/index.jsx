@@ -13,26 +13,26 @@ export default function IronAddGame(props) {
   // 2) Write State
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [genre, setGenre] = useState("");
-  const [publisher, setPublisher] = useState("");
-  const [platform, setPlatform] = useState("");
-  const [developer, setDeveloper] = useState(""); 
+  const [game_url, setGame_url] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [github, setGithub] = useState("");
+  const [imgUrl, setImgUrl] = useState(""); 
 
   // 4) and 5) Steps
 
   const handleSubmit = (e) =>{
     e.preventDefault();
 
-    const requestBody = {title, description, genre, publisher, platform, developer};
+    const requestBody = {title, description, game_url, linkedin, github, imgUrl};
 
     ironGamesService.createGame(requestBody)
     .then(()=>{
         setTitle("");
         setDescription("");
-        setGenre('');
-        setPublisher('');
-        setPlatform('');
-        setDeveloper('');
+        setGame_url('');
+        setLinkedin('');
+        setGithub('');
+        setImgUrl('');
     })
     .catch((error)=>console.log(error));
   }
@@ -57,33 +57,33 @@ export default function IronAddGame(props) {
         onChange={(e) => setDescription(e.target.value)}
       />
 
-      <label>Genre:</label>
+      <label>Game URL:</label>
       <input
         type="text"
-        name="genre"
-        value={genre}
-        onChange={(e) => setGenre(e.target.value)}
+        name="game_url"
+        value={game_url}
+        onChange={(e) => setGame_url(e.target.value)}
       />
-      <label>Publisher:</label>
+      <label>Linked In:</label>
       <input
         type="text"
-        name="publisher"
-        value={publisher}
-        onChange={(e) => setPublisher(e.target.value)}
+        name="linkedin"
+        value={linkedin}
+        onChange={(e) => setLinkedin(e.target.value)}
       />
-      <label>Platform:</label>
+      <label>GitHub:</label>
       <input
         type="text"
-        name="platform"
-        value={platform}
-        onChange={(e) => setPlatform(e.target.value)}
+        name="github"
+        value={github}
+        onChange={(e) => setGithub(e.target.value)}
       />
-      <label>Developer:</label>
+      <label>Image:</label>
       <input
         type="text"
-        name="developer"
-        value={developer}
-        onChange={(e) => setDeveloper(e.target.value)}
+        name="imgUrl"
+        value={imgUrl}
+        onChange={(e) => setImgUrl(e.target.value)}
       />
       
 

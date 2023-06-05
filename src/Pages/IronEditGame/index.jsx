@@ -6,10 +6,10 @@ function IronEditGamePage() {
     // Write State 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [genre, setGenre] = useState("");
-    const [publisher, setPublisher] = useState("");
-    const [platform, setPlatform] = useState("");
-    const [developer, setDeveloper] = useState("");
+    const [game_url, setGame_url] = useState("");
+    const [linkedin, setLinkedin] = useState("");
+    const [github, setGithub] = useState("");
+    const [imgUrl, setImgUrl] = useState(""); 
 
     const {gameId} = useParams();
 
@@ -21,11 +21,11 @@ function IronEditGamePage() {
         .then((response)=>{
             const oneGame = response.data; 
             setTitle(oneGame.title);
-            setDescription(oneGame.short_description);
-            setGenre(oneGame.genre);
-            setPublisher(oneGame.publisher);
-            setPlatform(oneGame.platform);
-            setDeveloper(oneGame.developer);
+            setDescription(oneGame.description);
+            setGame_url(oneGame.game_url);
+            setLinkedin(oneGame.linkedin);
+            setGithub(oneGame.github);
+            setImgUrl(oneGame.imgUrl);
         })
         .catch((error)=>{
             console.log(error)
@@ -39,7 +39,7 @@ function IronEditGamePage() {
         e.preventDefault();
 
       
-        const requestBody = {title, description, genre, publisher, platform, developer};      
+        const requestBody = {title, description, game_url, linkedin, github, imgUrl};      
 
         // make a PUT request to update the project
        ironGamesService.updateGame(gameId, requestBody)
