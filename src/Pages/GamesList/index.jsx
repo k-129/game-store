@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gamesService from '../../Services/games.service';
 import Nav from '../../Components/Nav';
 import '../../App.css';
+import SearchBar from "../../Components/SearchBar";
 
 export default function GamesListPage() {
   const [games, setGames] = useState([]);
@@ -49,7 +50,11 @@ gamesFilter()
   return (
     <div className="game-list-page d-flex">
       <div className="games-div">
+      <div className="search">
+        <SearchBar getAllGames={getAllGames}/>
         <Nav setGenre={setGenre}  setPlatform={setPlatform} setPublisher={setPublisher}/>
+      </div>
+      
         <div className="games-list">
           {fetching ? (
             <div className="d-flex justify-content-center m-2 mt-5 flex-wrap">
