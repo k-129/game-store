@@ -34,6 +34,9 @@ class AuthService {
   editProfile = (id, requestBody) => {
     return this.api.put(`/api/profile/edit/${id}`, requestBody);
   };
+  delete = (id, requestBody) => {
+    return this.api.delete(`/api/profile/${id}`, requestBody);
+  };
 
   verify = () => {
     return this.api.get('/api/verify');

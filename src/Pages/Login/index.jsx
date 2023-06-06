@@ -38,11 +38,12 @@ export default function LoginPage() {
 
   return (
     <div className="login-page">
+    <div className='login-form'>
     <h1>Login</h1>
 
     <form onSubmit={handleLoginSubmit}>
-    <div>
-      <label>Email:</label>
+    <div  className='form-input'>
+      <label className='login-label'>Email</label>
       <input 
         type="email"
         name="email"
@@ -50,8 +51,8 @@ export default function LoginPage() {
         onChange={handleEmail}
       />
    </div>
-   <div>
-      <label>Password:</label>
+   <div  className='form-input'>
+      <label className='login-label'>Password</label>
       <input 
         type="password"
         name="password"
@@ -59,13 +60,15 @@ export default function LoginPage() {
         onChange={handlePassword}
       />
   </div>
+    { errorMessage && <p className="error-message">{errorMessage}</p> }
   <div>
-      <button type="submit">Login</button>
+      <button className='signup-btn' type="submit">Login</button>
   </div>
     </form>
-    <Link to={`/signup`}>Sign Up</Link>
+    <p className='login-create'>Don't have an account? <Link className='login-route1' to={`/signup`}>Sign Up</Link></p>
+    
+  </div>
 
-    { errorMessage && <p className="error-message">{errorMessage}</p> }
 </div>
 
   )

@@ -1,7 +1,7 @@
-import { Link, useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../Context/auth.context';
-import axios from 'axios';
+import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Context/auth.context";
+import axios from "axios";
 
 export default function ProfilePage() {
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
@@ -10,7 +10,9 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/${user._id}`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/${user._id}`
+        );
         setUserInfo(response.data);
       } catch (error) {
         console.log(error);
@@ -41,6 +43,7 @@ export default function ProfilePage() {
 
       <div className="bucket-list">
         cards for bucket list
+        {userInfo && userInfo.favGames.map((game) => <p>{game.title}</p>)}
       </div>
     </div>
   );

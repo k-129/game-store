@@ -32,9 +32,9 @@ function EditProfilePage() {
     }
   };
 
-  const deleteUser = (user) => {
+  const deleteUser = () => {
     axios.delete(
-      `${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/edit/${user._id}`,
+      `${import.meta.env.VITE_REACT_APP_API_URL}/api/profile/${user._id}`,
       {
         headers: {
           Authorization: `Bearer ${getToken}`,

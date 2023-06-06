@@ -81,33 +81,33 @@ function IronEditGamePage() {
         onChange={(e) => setDescription(e.target.value)}
       />
 
-      <label>genre:</label>
+      <label>Link to the Game:</label>
       <input
         type="text"
-        name="genre"
-        value={genre}
-        onChange={(e) => setGenre(e.target.value)}
+        name="game_url"
+        value={game_url}
+        onChange={(e) => setGame_url(e.target.value)}
       />
-      <label>publisher:</label>
+      <label>Linked In:</label>
       <input
         type="text"
-        name="publisher"
-        value={publisher}
-        onChange={(e) => setPublisher(e.target.value)}
+        name="linkedin"
+        value={linkedin}
+        onChange={(e) => setLinkedin(e.target.value)}
       />
-      <label>Platform:</label>
+      <label>GitHub:</label>
       <input
         type="text"
-        name="platform"
-        value={platform}
-        onChange={(e) => setPlatform(e.target.value)}
+        name="github"
+        value={github}
+        onChange={(e) => setGithub(e.target.value)}
       />
-      <label>Developer:</label>
+      <label>Image:</label>
       <input
         type="text"
-        name="developer"
-        value={developer}
-        onChange={(e) => setDeveloper(e.target.value)}
+        name="imgUrl"
+        value={imgUrl}
+        onChange={(e) => setImgUrl(e.target.value)}
       />
       
 

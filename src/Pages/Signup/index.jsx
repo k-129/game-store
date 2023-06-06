@@ -35,11 +35,12 @@ export default function SignUpPage() {
 
     return (
     <div className="signup-page">
+    <div className='sign-up-form'>
       <h1>Sign Up</h1>
  
       <form onSubmit={handleSignupSubmit}>
-      <div>
-        <label>Email:</label>
+      <div className='form-input'>
+        <label className='signup-label'>Email:</label>
         <input 
           type="email"
           name="email"
@@ -47,8 +48,8 @@ export default function SignUpPage() {
           onChange={handleEmail}
         />
      </div>
-     <div>
-        <label>Password:</label>
+     <div className='form-input'>
+        <label className='signup-label'>Password:</label>
         <input 
           type="password"
           name="password"
@@ -56,8 +57,8 @@ export default function SignUpPage() {
           onChange={handlePassword}
         />
     </div>
-    <div>
-        <label>Name:</label>
+    <div className='form-input'>
+        <label className='signup-label'>Name:</label>
         <input 
           type="text"
           name="name"
@@ -65,15 +66,16 @@ export default function SignUpPage() {
           onChange={handleName}
         />
     </div>
+      { errorMessage && <p className="error-message">{errorMessage}</p> }
     <div>
-        <button type="submit">Sign Up</button>
+        <button className='signup-btn' type="submit">Sign Up</button>
     </div>
       </form>
  
-      { errorMessage && <p className="error-message">{errorMessage}</p> }
  
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <p className='login-route'>Already have account? <Link className='login-route1' to={"/login"}>Login</Link></p>
+      
+    </div>
   </div>
   )
 }

@@ -52,7 +52,7 @@ export default function Nav(props) {
         <div className="selects">
           <div className="genres">
             <select onChange={(e)=>setGenre(e.target.value)} name="genres" id="genres" className="btn genre-box">
-              <option value="" >All Genres</option>
+              <option className="filter-text" value="" >Genres</option>
               {genres.map((genre) => (
                 <option key={genre} value={genre}>
                   {genre}
@@ -62,7 +62,7 @@ export default function Nav(props) {
           </div>
           <div className="platforms">
             <select onChange={(e)=>setPlatform(e.target.value)} name="platforms" id="platforms" className="btn genre-box ">
-              <option value="">All Platforms</option>
+              <option className="filter-text" value="">Platforms</option>
               {platforms.map((platform) => (
                 <option key={platform} value={platform}>
                   {platform}
@@ -72,7 +72,7 @@ export default function Nav(props) {
           </div>
           <div className="publishers">
             <select onChange={(e)=>setPublisher(e.target.value)} name="publishers" id="publishers" className="btn genre-box">
-              <option value="">All Publishers</option>
+              <option className="filter-text" value="">Publishers</option>
               {publishers.map((publisher) => (
                 <option key={publisher} value={publisher}>
                   {publisher}

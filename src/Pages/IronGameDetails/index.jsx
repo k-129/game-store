@@ -28,7 +28,7 @@ export default function IronGameDetailsPage(props) {
       {ironGameDetails && (
         <div className="d-flex flex-column">
           <h2>{ironGameDetails.title}</h2>
-          <img src={ironGameDetails.imgUrl} />
+          <img src={ironGameDetails.imgUrl} alt=""/>
           <p>{ironGameDetails.description}</p>
         </div>
       )}
