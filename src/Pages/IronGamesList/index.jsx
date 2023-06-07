@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ironGamesService from '../../Services/ironGames.service';
+import {ironGamesService} from '../../Services/ironGames.service';
 import '../../App.css';
 
 export default function IronGamesListPage() {

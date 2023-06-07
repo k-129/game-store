@@ -61,7 +61,7 @@ export default function NavBar(props) {
             </li>
             {user && user.admin && 
               <li className="nav-item">
-                <Link className="nav-link" to="/add-game">
+                <Link className="nav-link" to="/ironhack/add-game">
                   Add Game
                 </Link>
               </li>

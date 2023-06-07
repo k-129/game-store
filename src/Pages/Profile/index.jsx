@@ -43,7 +43,8 @@ export default function ProfilePage() {
 
       <div className="bucket-list">
         cards for bucket list
-        {userInfo && userInfo.favGames.map((game) => <p>{game.title}</p>)}
+        {userInfo &&
+          userInfo.favGames.map((game) => <p key={game._id}>{game.title}</p>)}
       </div>
     </div>
   );

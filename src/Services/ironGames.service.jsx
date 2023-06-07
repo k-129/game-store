@@ -48,7 +48,15 @@ class IronGamesService {
   };
 }
 
+// Coudinary
+const uploadImage = (file) => {
+  return api
+    .post("/upload", file)
+    .then((res) => res.data)
+    .catch(errorHandler);
+};
+
 // Create one instance object
 const ironGamesService = new IronGamesService();
 
-export default ironGamesService;
+export {uploadImage, ironGamesService};

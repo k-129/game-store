@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useParams, useNavigate, Link} from 'react-router-dom';
-import ironGamesService from '../../Services/ironGames.service';
+import {ironGamesService} from '../../Services/ironGames.service';
 
 function IronEditGamePage() {
     // Write State 

@@ -6,11 +6,14 @@ import "../../App.css";
 import SearchBar from "../../Components/SearchBar";
 import FavoriteRoute from "../Favorites";
 import { AuthContext } from "../../Context/auth.context";
+import axios from "axios";
 
 export default function GamesListPage() {
   const [games, setGames] = useState([]);
   const [gamesFiltered, setGamesFiltered] = useState([]);
   const [fetching, setFetching] = useState(true);
+
+  const [currentUser, setCurrentUser] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -19,9 +22,6 @@ export default function GamesListPage() {
   const [publisher, setPublisher] = useState("");
 
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
-  const userId = useContext(AuthContext);
-
-
 
   // function that gets projects via axios
   const getAllGames = () => {
@@ -31,6 +31,7 @@ export default function GamesListPage() {
         setGames(response.data);
         setGamesFiltered(response.data);
         setFetching(false);
+        console.log("fetching");
       })
       .catch((error) => console.log(error));
   };
@@ -46,7 +47,7 @@ export default function GamesListPage() {
       }
 
       setGamesFiltered(result);
-    } else if(searchQuery === ""){
+    } else if (searchQuery === "") {
       getAllGames();
     }
   };
@@ -57,8 +58,16 @@ export default function GamesListPage() {
 
   // setting a side-effect after initial rendering of component that is
   // calling getAllGames function
+  const getUpdateUser = async () => {
+    const response = await axios.get(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/api/profile-fav/${user._id}`
+    );
+    setCurrentUser(response.data);
+  };
+
   useEffect(() => {
     getAllGames();
+    getUpdateUser();
   }, []);
 
   const gamesFilter = () => {
@@ -76,25 +85,33 @@ export default function GamesListPage() {
   useEffect(() => {
     gamesFilter();
   }, [genre, platform, publisher]);
- 
 
-  const handleFavoriteToggle = (gameId) => {
-    setGamesFiltered((prevGames) => {
-      return prevGames.map((game) => {
-        if (game._id === gameId) {
-          return { ...game, isFavorite: !game.isFavorite };
-        }
-        return game;
-      });
-    });
+  const removeGame = async (gameId) => {
+    await axios.delete(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/api/remove-favorites/${
+        user._id
+      }/${gameId}`
+    );
+    getUpdateUser();
   };
 
+  const addGame = async (gameId) => {
+    await axios.put(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/api/add-favorites/${
+        user._id
+      }/${gameId}`
+    );
+    getUpdateUser();
+  };
 
   return (
     <div className="game-list-page d-flex">
       <div className="games-div">
         <div className="search">
-        <SearchBar setSearchQuery={setSearchQuery} totalGames={gamesFiltered.length} />
+          <SearchBar
+            setSearchQuery={setSearchQuery}
+            totalGames={gamesFiltered.length}
+          />
           <Nav
             setGenre={setGenre}
             setPlatform={setPlatform}
@@ -197,8 +214,7 @@ export default function GamesListPage() {
             gamesFiltered.map((game, index) => (
               <div
                 className="card d-inline-flex justify-content-center m-2 mt-5"
-                key={game._id}
-              >
+                key={game._id}>
                 {/* Game content */}
                 <Link to={`/games/${game._id}`}>
                   <img
@@ -210,15 +226,43 @@ export default function GamesListPage() {
                     <h5 className="card-title title">{game.title}</h5>
                   </div>
                 </Link>
-                {isLoggedIn && (
+                {currentUser.favGames.includes(game._id) ? (
+                  <button onClick={() => removeGame(game._id)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-heart-fill"
+                      viewBox="0 0 16 16">
+                      <path
+                        fillRule="evenodd"
+                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                      />
+                    </svg>
+                  </button>
+                ) : (
+                  <button onClick={() => addGame(game._id)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                  </button>
+                )}
+
+                {/*                 {isLoggedIn && (
                   <FavoriteRoute
                     user={user}
                     gameId={game._id}
-                    isFavorite={game.isFavorite}
                     userId={user.userId}
                     onFavoriteToggle={handleFavoriteToggle}
                   />
-                )}
+                )} */}
               </div>
             ))
           )}
