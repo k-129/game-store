@@ -16,19 +16,27 @@
   padding: 0rem;
   text-align: center;
   margin-top: 10%;
-/*   background-color: var(--heading);
 
- */  color: var(--buttons);
-background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e);
-}
+  color: var(--buttons);
+/* background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e);
+ */}
+
+  html{
+ /* background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e); 
+  background-repeat: no-repeat;
+  */
+  height: 100%;
+  width: 100%;
+ } 
 
 body {
-/*   background-color: var(--heading);
- */ background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e);  color: var(--buttons);
-/*   background-image: url('../src/assets/images/background.jpeg');
+  background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e); 
+  color: var(--buttons);
   background-repeat: repeat;
-  background-size: fill;
- */}
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
 
 .thumbnail {
   max-width: 25rem;
