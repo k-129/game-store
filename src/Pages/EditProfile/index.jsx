@@ -8,6 +8,7 @@ function EditProfilePage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [aboutMe, setAboutMe] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
   const navigate = useNavigate();
   const getToken = localStorage.getItem("authToken");
   const { logoutUser, user } = useContext(AuthContext);
@@ -27,6 +28,7 @@ function EditProfilePage() {
       setName(response.data.name);
       setEmail(response.data.email);
       setAboutMe(response.data.bio);
+      setImgUrl(response.data.imgUrl);
     } catch (error) {
       console.log(error);
     }
@@ -68,6 +70,7 @@ function EditProfilePage() {
       name,
       email,
       aboutMe,
+      imgUrl,
     };
 
     axios

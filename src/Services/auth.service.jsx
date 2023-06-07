@@ -28,8 +28,8 @@ class AuthService {
   signup = (requestBody) => {
     return this.api.post('/api/signup', requestBody);
   };
- profile = id => {
-    return this.api.get(`/api/profile/${id}`);
+ profile = (id, requestBody) => {
+    return this.api.get(`/api/profile/${id}`, requestBody);
   };
   editProfile = (id, requestBody) => {
     return this.api.put(`/api/profile/edit/${id}`, requestBody);

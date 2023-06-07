@@ -46,10 +46,14 @@ body {
   background-color: var(--decorative);
   border-color: var(--decorative);
 }
-.title {
+.title, .fav-title {
   font-size: 1rem;
   color: var(--heading);
 }
+.title:hover, .fav-title:hover {
+  font-size: 1rem;
+  color: var(--heading);
+cursor: pointer;}
 
 .platform-icon {
   max-width: 100rem;
@@ -687,4 +691,109 @@ body {
 
 .login-label{
   margin: 0rem 3.5rem 2% 0;
+}
+
+.profile{
+  display: flex;
+}
+.profile-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  background-color: #0a2c4e;
+  outline: 2px solid #daa520;
+  border-radius: 10px;
+  margin: 1rem 0 0rem 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.picture-container {
+  width: 300px;
+  height: 270px;
+  position: relative;
+  overflow: hidden;
+
+  
+}
+
+.picture-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(50% 3%, 85% 25%, 85% 72%, 50% 95%, 13% 72%, 13% 25%);
+  
+}
+
+
+
+.user-links{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.edit-profile-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  background-color: var(--buttons);
+  margin:0 1rem 0 2.7rem;
+  width: 100px;
+}
+
+.edit-profile-btn:hover{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  outline: 1px solid #daa520;
+  background-color: #0a3f74;
+  margin-right: 1rem;
+  justify-content: center;
+  width: 100px;
+
+}
+
+.logout-btn{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  background-color: var(--buttons);
+  margin:0 2.8rem 0 0rem;
+  width: 100px;
+  justify-content: center;
+
+}
+.logout-btn:hover{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  outline: 1px solid #daa520;
+  background-color: #0a3f74;
+  width: 100px;
+  justify-content: center;
+
+}
+
+.remove-button{
+  background-color: var(--heading);
+  color: var(--buttons);
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+.remove-button:hover{
+  background-color: rgba(221, 45, 45, 0.466);
+  color: var(--heading);
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.card{
+  border: none;
+  outline: 1px solid #daa520;
 }

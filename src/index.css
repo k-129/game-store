@@ -68,3 +68,6 @@ button:focus-visible {
   }
 }
  */
+ a {
+  text-decoration: inherit;
+}
