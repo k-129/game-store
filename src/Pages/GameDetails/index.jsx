@@ -28,19 +28,22 @@ const gameInfo = async () => {
   }, [])
 
   return (
-    <div className="d-flex flex-column">
+    <div className="game-page">
         {gameDetails && (
-            <div className='d-flex flex-column'>
-                <h2>{gameDetails.title}</h2>
-                <img src={gameDetails.thumbnail}/>
-                <p>{gameDetails.short_description}</p>
+          <div className='game-info'>
+            <div className="game-container">
+                <h2 className="game-title">{gameDetails.title}</h2>
+                <img className="game-image" src={gameDetails.thumbnail}/>
+                <p className="game-description">{gameDetails.short_description}</p>
             </div>
+          </div>
         )}
+        <div>
+                <Link className="btn btn-warning back-btn" to="/games">Back to Games</Link>
                 {user && user.admin &&
-                <Link to={`/games/edit/${gameId}`}>Edit Game</Link>
+                <Link className="btn btn-warning edit-btn" to={`/games/edit/${gameId}`}>Edit Game</Link>
                 }
-                <Link to="/games">Back</Link>
-
+        </div>
 
                 
     </div>

@@ -28,7 +28,7 @@ function EditProfilePage() {
       );
       setName(response.data.name);
       setEmail(response.data.email);
-      setAbout_me(response.data.bio);
+      setAbout_me(response.data.about_me);
       setImgUrl(response.data.imgUrl);
     } catch (error) {
       console.log(error);
@@ -111,59 +111,79 @@ function EditProfilePage() {
   return (
     <div className="editProfileBody">
       <form onSubmit={handleSubmit} className="editProfileForm">
-        <h4>Edit your profile {name}</h4>
+        <h4 className="edit-profile-title">Edit your profile {user.name}</h4>
+
+        <div className="edit-name">
+          <label className="form-label edit" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleName}
+          />
+        </div>
+        <div className="edit-email">
+          <label className="form-label edit" htmlFor="email">
+            Email address
+          </label>
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmail}
+          />
+        </div>
+        <div className="edit-about-me">
+          <label className="form-label edit" htmlFor="about_me">
+            Bio
+          </label>
+          <textarea
+            className="form-control"
+            name="about_me"
+            cols="30"
+            rows="7"
+            onChange={handleAbout_me}
+            value={about_me}></textarea>
+        </div>
+
+        <div className="edit-image">
+          <label className="form-label edit" htmlFor="imgUrl">
+            Image
+          </label>
+          <input
+            className="form-control"
+            type="file"
+            onChange={(e) => handleFileUpload(e)}
+          />
+        </div>
+        {uploading ? (
+          <button
+            className="btn btn-warning loading-btn"
+            type="button"
+            disabled>
+            <span
+              className="spinner-grow spinner-grow-sm "
+              role="status"
+              aria-hidden="true"></span>
+            Loading...
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="btn btn-warning editProfileSubmitBtn">
+            Edit profile
+          </button>
+        )}
         <div className="deleteProfileBtnDiv">
           <button
             onClick={() => deleteUser(user._id)}
-            className="deleteProfileBtn">
+            className="btn btn-danger deleteProfileBtn">
             Delete profile
           </button>
-        </div>
-        <div className="editProfileFormInnerDiv">
-          <div className="editProfileFormInfoDiv1">
-            <label htmlFor="name">Name*:</label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              placeholder={name}
-              onChange={handleName}
-            />
-
-            <label htmlFor="email">Email address*</label>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              placeholder={email}
-              onChange={handleEmail}
-            />
-
-            <label htmlFor="about_me">Bio*</label>
-            <textarea
-              name="about_me"
-              cols="30"
-              rows="7"
-              value={about_me}
-              placeholder={about_me}
-              onChange={handleAbout_me}></textarea>
-
-            <label htmlFor="imgUrl">Image*</label>
-            <input type="file" onChange={(e) => handleFileUpload(e)} />
-          </div>
-          {uploading ? (
-            <button className="btn btn-warning" type="button" disabled>
-              <span
-                className="spinner-grow spinner-grow-sm"
-                role="status"
-                aria-hidden="true"></span>
-              Loading...
-            </button>
-          ) : (
-            <button type="submit" className="editProfileSubmitBtn">
-              Edit profile
-            </button>
-          )}
         </div>
       </form>
     </div>

@@ -40,7 +40,7 @@ export default function ProfilePage() {
     }
   };
 
-  if (!user) {
+  if (!userInfo) {
     return <div>Loading...</div>;
   }
 
@@ -50,21 +50,26 @@ export default function ProfilePage() {
         {/* <img className="user-pic" src="" alt="profile-pic"/> */}
         <div className="user-info">
           <div className="picture-container">
-            <img className="profile-pic" src={user.imgUrl} alt="Your Image" />
+            <img
+              className="profile-pic"
+              src={userInfo.imgUrl}
+              alt="Your Image"
+            />
           </div>
 
           <h2 className="user-name">
-            Hey {user.name.charAt(0).toUpperCase() + user.name.slice(1)}!
+            Hey {userInfo.name.charAt(0).toUpperCase() + userInfo.name.slice(1)}
+            !
           </h2>
-          <p className="user-email">{user.email}</p>
+          <p className="user-email">{userInfo.email}</p>
 
           <p className="about-me h4">About Me: </p>
-          <p className="about-me lead">{user.about_me}</p>
+          <p className="about-me lead">{userInfo.about_me}</p>
         </div>
         <div className="user-links">
           <Link
             className="edit-profile-btn btn"
-            to={`/profile/edit/${user._id}`}>
+            to={`/profile/edit/${userInfo._id}`}>
             Edit
           </Link>
           <button className="btn logout-btn" onClick={logoutUser}>
@@ -90,7 +95,9 @@ export default function ProfilePage() {
                   <h5 className="card-title fav-title">{game.title}</h5>
                 </div>
               </Link>
-              <button className=" remove-button" onClick={() => removeGame(game._id)}>
+              <button
+                className=" remove-button"
+                onClick={() => removeGame(game._id)}>
                 Remove
               </button>
             </div>

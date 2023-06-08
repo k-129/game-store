@@ -36,12 +36,14 @@ export default function SignUpPage() {
     return (
     <div className="signup-page">
     <div className='sign-up-form'>
-      <h1>Sign Up</h1>
+      <h1 className='signup-title'>Sign Up</h1>
  
       <form onSubmit={handleSignupSubmit}>
       <div className='form-input'>
-        <label className='signup-label'>Email:</label>
+        <label className='signup-label signup'>Email</label>
         <input 
+
+className="form-control"
           type="email"
           name="email"
           value={email}
@@ -49,8 +51,10 @@ export default function SignUpPage() {
         />
      </div>
      <div className='form-input'>
-        <label className='signup-label'>Password:</label>
+        <label className='signup-label signup'>Password</label>
         <input 
+
+            className="form-control"
           type="password"
           name="password"
           value={password}
@@ -58,8 +62,9 @@ export default function SignUpPage() {
         />
     </div>
     <div className='form-input'>
-        <label className='signup-label'>Name:</label>
+        <label className='signup-label signup'>Name</label>
         <input 
+          className="form-control"
           type="text"
           name="name"
           value={name}
