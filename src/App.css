@@ -873,7 +873,7 @@ body {
   align-content: center;
   outline: 3px solid var(--buttons);
   border-radius: 10px;
-  max-width: 800px;
+  max-width: 100%;
   width: auto;
   height: 50rem;
   max-height: 90%;
@@ -919,6 +919,7 @@ body {
   font-size: 3.5rem;
   letter-spacing: 3px;
   padding-top: 0;
+  margin-top: 0;
 }
 
 .fav-btn:hover {
@@ -1094,4 +1095,26 @@ hr{
   color: #fff;
   font-style: italic;
   cursor: pointer;
+}
+
+.main-info2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  gap: 3rem;
+  text-decoration: underline;
+  color: var(--buttons);
+  font-style: italic;
+  margin: 2rem 0 0 0;
+}
+
+.play{
+  font-size: 1.5rem;
+  margin: 0 1rem 0 1rem;
+}
+
+.social{
+  font-size: 1.2rem;
 }

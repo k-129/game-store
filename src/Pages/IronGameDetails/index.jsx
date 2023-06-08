@@ -33,6 +33,13 @@ export default function IronGameDetailsPage(props) {
           <img className="game-image" src={ironGameDetails.imgUrl} alt=""/>
           <p className="game-description">{ironGameDetails.description}</p>
         </div>
+        <div className="main-info2">
+         
+          <Link className="game-link social" to={ironGameDetails.linkedin}>Linked In</Link>
+          <Link className="game-link play"  to={ironGameDetails.game_url}>Play Game</Link>
+          <Link className="game-link social"  to={ironGameDetails.github}>GitHub</Link>
+         
+        </div>
         
       </div>
       )}
