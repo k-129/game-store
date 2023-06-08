@@ -79,7 +79,12 @@ export default function EditGameDetailsPage() {
   return (
     <div className="edit-game-page">
       <form onSubmit={handleFormSubmit} className="edit-game-form">
+      <div className="btn-title">
+      <Link className="btn btn-warning back-btn-1" to={`/games/${gameId}`}>
+            Back
+          </Link>
         <h3 className="edit-profile-title">Edit the Game</h3>
+        </div>
         <div className="edit-game-title">
           <label className="form-label edit">Title</label>
           <input
@@ -140,7 +145,12 @@ export default function EditGameDetailsPage() {
           />
         </div>
 
-      {uploading ? (<button
+        <div className="edit-games-btn">
+          <button className="btn btn-danger  delete- ih-loading-game-btn" onClick={deleteGame}>
+            Delete Game
+          </button>
+      {uploading ? (
+        <button
             className="btn btn-warning loading-game-btn"
             type="button"
             disabled>
@@ -151,18 +161,12 @@ export default function EditGameDetailsPage() {
             Loading...
           </button>)
           :(
-        <button className="btn btn-warning edit-game-btn" type="submit">
+        <button className="btn btn-warning edit-game-btn ih-loading-game-btn" type="submit">
           Edit
         </button>)
         }
-        <div className="edit-games-btn">
-          <button className="btn btn-danger " onClick={deleteGame}>
-            Delete Game
-          </button>
 
-          <Link className="btn btn-warning" to={`/games/${gameId}`}>
-            Back to game
-          </Link>
+    
         </div>
       </form>
     </div>

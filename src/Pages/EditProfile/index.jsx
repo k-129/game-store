@@ -113,7 +113,7 @@ function EditProfilePage() {
       <form onSubmit={handleSubmit} className="editProfileForm">
         <h4 className="edit-profile-title">Edit your profile {user.name}</h4>
 
-        <div className="edit-name">
+        <div className="edit-name ">
           <label className="form-label edit" htmlFor="name">
             Name
           </label>

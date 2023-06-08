@@ -943,7 +943,7 @@ body {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.no-fav-btn:hover{
+.no-fav-btn:hover {
   background-color: #013569e1;
   color: var(--buttons);
   border: none;
@@ -953,16 +953,15 @@ body {
   border-bottom-right-radius: 5px;
 }
 
-.edit-game-page{
+.edit-game-page {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
-
 }
 
-.edit-game-form{
+.edit-game-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -975,29 +974,78 @@ body {
   max-width: 95%;
 }
 
-.edit-game-btn{
-margin: 2rem  0 0 0;
-width: 25%;
-align-self: center;
+.edit-game-btn {
+  margin: 2rem 0 0 0;
+  width: 25%;
+  align-self: center;
 }
 
-.edit-game-btn:hover{
-margin: 2rem  0 0 0;
-width: 25%;
-align-self: center;
-background-color: var(--heading);
-outline: 1px solid var(--buttons);
-color: var(--buttons);
+.edit-game-btn:hover {
+  margin: 2rem 0 0 0;
+  width: 25%;
+  align-self: center;
+  background-color: var(--heading);
+  outline: 1px solid var(--buttons);
+  color: var(--buttons);
 }
 
-.edit-games-btn{
+.edit-games-btn {
   display: flex;
   justify-content: space-around;
-  margin: 2rem 0 0 0 ;
+  margin: 2rem 0 0 0;
 }
 
-.loading-game-btn{
+.loading-game-btn {
+  width: 25%;
+  align-self: center;
+  margin-top: 1rem;
+}
+
+/* .loading-game-btn {
   width: 25%;
   align-self: center;
   margin-top: 2rem;
+} */
+.ih-loading-game-btn {
+  width: 25%;
+  align-self: center;
+  margin-top: 0.5rem;
 }
+.ih-loading-game-btn:hover {
+  width: 25%;
+  align-self: center;
+  margin-top: 0.5rem;
+  background-color: var(--heading);
+  outline: 1px solid var(--buttons);
+  color: var(--buttons);
+}
+.delete-ih-loading-game-btn {
+  width: 25%;
+  align-self: center;
+  margin-top: 0.5rem;
+}
+
+.btn-title {
+  display: flex;
+}
+
+.back-btn-1 {
+  color: var(--heading);
+  margin-right: 7.8rem;
+  width: 60px;
+  height: 35px;
+}
+.back-btn-1:hover {
+  background-color: var(--heading);
+  outline: 1px solid var(--buttons);
+  color: var(--buttons);
+  margin-right: 7.8rem;
+  width: 60px;  
+  height: 35px;
+}
+
+.ih-games {
+  margin-top: 2rem;
+}
+
+
