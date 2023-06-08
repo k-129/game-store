@@ -35,6 +35,19 @@ const gameInfo = async () => {
                 <h2 className="game-title">{gameDetails.title}</h2>
                 <img className="game-image" src={gameDetails.thumbnail}/>
                 <p className="game-description">{gameDetails.short_description}</p>
+                <hr/>
+                <div className="game-info-container">
+                <div className="main-info">
+                    <p>Genre: {gameDetails.genre}</p>
+                    <p>Publisher: {gameDetails.publisher}</p>
+                    <p>Developer: {gameDetails.developer}</p>
+                </div>
+                <div className="main-info">
+                    <p>Platform: {gameDetails.platform}</p>
+                    <Link className="game-link" to={gameDetails.game_url}>Play Game</Link>
+                    
+                </div>
+                </div>
             </div>
           </div>
         )}

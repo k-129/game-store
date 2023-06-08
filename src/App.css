@@ -875,8 +875,8 @@ body {
   border-radius: 10px;
   max-width: 800px;
   width: auto;
-  height: 550px;
-  max-height: 800px;
+  height: 50rem;
+  max-height: 90%;
   margin: 1.5rem;
   padding: 4rem;
 }
@@ -905,6 +905,13 @@ body {
 .back-btn,
 .edit-btn {
   margin: 1rem;
+}
+.back-btn:hover,
+.edit-btn:hover {
+  margin: 1rem;
+  background-color: var(--heading);
+  outline: 1px solid var(--buttons);
+  color: var(--buttons);
 }
 
 .ih-game-title {
@@ -1049,3 +1056,42 @@ body {
 }
 
 
+
+.login-btn-wait {
+  width: 50%;
+  align-self: center;
+  margin-top: 1rem;
+}
+
+.game-info-container{
+
+  display: flex;
+  justify-content: space-between;
+}
+
+hr{
+  width: 100%;
+  height: 3px;
+  background-color: var(--buttons);
+  opacity: 100%;
+  border-radius: 5px;
+  margin: 2rem 0 2rem 0;
+}
+
+.main-info{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.game-link{
+  text-decoration: underline;
+  color: var(--buttons);
+  font-style: italic;
+}
+.game-link:hover{
+  text-decoration: underline;
+  color: #fff;
+  font-style: italic;
+  cursor: pointer;
+}

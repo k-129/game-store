@@ -8,6 +8,8 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [uploading, setUploading] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -22,6 +24,7 @@ export default function LoginPage() {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    setUploading(true);
 
     const requestBody = { email, password };
 
@@ -30,6 +33,7 @@ export default function LoginPage() {
       .then((response) => {
         storeToken(response.data.authToken);
         authenticateUser();
+        setUploading(false)
         navigate("/");
       })
       .catch((error) => {
@@ -66,9 +70,22 @@ export default function LoginPage() {
           </div>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div>
+          {uploading ? (
+            <button
+            className="btn btn-warning login-btn-wait"
+            type="button"
+            disabled>
+            <span
+              className="spinner-grow spinner-grow-sm "
+              role="status"
+              aria-hidden="true"></span>
+            Loggin In
+          </button>
+            ):(
             <button className="signup-btn" type="submit">
               Login
             </button>
+          )}
           </div>
         </form>
         <p className="login-create">
