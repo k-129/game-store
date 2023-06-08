@@ -5,7 +5,7 @@ import gameService from '../../Services/games.service';
 export default function EditGameDetailsPage() {
     // Write State 
     const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [short_description, setShort_description] = useState("");
     const [genre, setGenre] = useState("");
     const [publisher, setPublisher] = useState("");
     const [platform, setPlatform] = useState("");
@@ -21,7 +21,7 @@ export default function EditGameDetailsPage() {
         .then((response)=>{
             const oneGame = response.data; 
             setTitle(oneGame.title);
-            setDescription(oneGame.short_description);
+            setShort_description(oneGame.short_description);
             setGenre(oneGame.genre);
             setPublisher(oneGame.publisher);
             setPlatform(oneGame.platform);
@@ -39,7 +39,7 @@ export default function EditGameDetailsPage() {
         e.preventDefault();
 
       
-        const requestBody = {title, description, genre, publisher, platform, developer};      
+        const requestBody = {title, short_description, genre, publisher, platform, developer};      
 
         // make a PUT request to update the project
        gameService.updateGame(gameId, requestBody)
@@ -77,8 +77,8 @@ export default function EditGameDetailsPage() {
       <label>Description:</label>
       <textarea
         name="description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        value={short_description}
+        onChange={(e) => setShort_description(e.target.value)}
       />
 
       <label>genre:</label>
