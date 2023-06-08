@@ -7,7 +7,9 @@ import SearchBar from "../../Components/SearchBar";
 import FavoriteRoute from "../Favorites";
 import { AuthContext } from "../../Context/auth.context";
 import axios from "axios";
-
+import AOS from 'aos';
+/* import 'aos/dist/aos.css';
+ */
 export default function GamesListPage() {
   const [games, setGames] = useState([]);
   const [gamesFiltered, setGamesFiltered] = useState([]);
@@ -226,6 +228,7 @@ export default function GamesListPage() {
             // Game cards
             gamesFiltered.map((game, index) => (
               <div
+               data-aos="fade-in"
                 className="card d-inline-flex justify-content-center m-2 mt-5"
                 key={game._id}>
                 {/* Game content */}

@@ -5,13 +5,14 @@ import { AuthContext } from "../../Context/auth.context";
 import authService from "../../Services/auth.service";
 
 function EditProfilePage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
+  const { logoutUser, user } = useContext(AuthContext);
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [about_me, setAbout_me] = useState(user.about_me);
+  const [imgUrl, setImgUrl] = useState(user.imgUrl);
   const navigate = useNavigate();
   const getToken = localStorage.getItem("authToken");
-  const { logoutUser, user } = useContext(AuthContext);
+  const [uploading, setUploading] = useState(false);
 
   const getUser = async () => {
     try {
@@ -27,7 +28,7 @@ function EditProfilePage() {
       );
       setName(response.data.name);
       setEmail(response.data.email);
-      setAboutMe(response.data.bio);
+      setAbout_me(response.data.bio);
       setImgUrl(response.data.imgUrl);
     } catch (error) {
       console.log(error);
@@ -59,17 +60,33 @@ function EditProfilePage() {
     setEmail(e.target.value);
   };
 
-  const handleAboutMe = (e) => {
-    setAboutMe(e.target.value);
+  const handleAbout_me = (e) => {
+    setAbout_me(e.target.value);
   };
 
+  const handleFileUpload = async (e) => {
+    try {
+      setUploading(true);
+      const uploadData = new FormData();
+      uploadData.append("imgUrl", e.target.files[0]);
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/api/upload`,
+        uploadData
+      );
+      setImgUrl(response.data.fileUrl);
+      setUploading(false);
+      console.log(response.data.fileUrl);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const body = {
       name,
       email,
-      aboutMe,
+      about_me,
       imgUrl,
     };
 
@@ -122,20 +139,32 @@ function EditProfilePage() {
               onChange={handleEmail}
             />
 
-            <label htmlFor="aboutMe">Bio*</label>
+            <label htmlFor="about_me">Bio*</label>
             <textarea
-              name="aboutMe"
+              name="about_me"
               cols="30"
               rows="7"
-              value={aboutMe}
-              placeholder={aboutMe}
-              onChange={handleAboutMe}></textarea>
-          </div>
-        </div>
+              value={about_me}
+              placeholder={about_me}
+              onChange={handleAbout_me}></textarea>
 
-        <button type="submit" className="editProfileSubmitBtn">
-          Edit profile
-        </button>
+            <label htmlFor="imgUrl">Image*</label>
+            <input type="file" onChange={(e) => handleFileUpload(e)} />
+          </div>
+          {uploading ? (
+            <button className="btn btn-warning" type="button" disabled>
+              <span
+                className="spinner-grow spinner-grow-sm"
+                role="status"
+                aria-hidden="true"></span>
+              Loading...
+            </button>
+          ) : (
+            <button type="submit" className="editProfileSubmitBtn">
+              Edit profile
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

@@ -50,7 +50,7 @@ export default function ProfilePage() {
         {/* <img className="user-pic" src="" alt="profile-pic"/> */}
         <div className="user-info">
           <div className="picture-container">
-            <img className="profile-pic" src={chico} alt="Your Image" />
+            <img className="profile-pic" src={user.imgUrl} alt="Your Image" />
           </div>
 
           <h2 className="user-name">
