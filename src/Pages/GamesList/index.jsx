@@ -248,7 +248,7 @@ export default function GamesListPage() {
                 {isLoggedIn &&
                 currentUser &&
                 currentUser.favGames.includes(game._id) ? (
-                  <button onClick={() => removeGame(game._id)}>
+                  <button className=" fav-btn" onClick={() => removeGame(game._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -263,7 +263,7 @@ export default function GamesListPage() {
                     </svg>
                   </button>
                 ) : isLoggedIn ? (
-                  <button onClick={() => addGame(game._id)}>
+                  <button className="no-fav-btn" onClick={() => addGame(game._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"

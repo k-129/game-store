@@ -92,7 +92,7 @@ export default function IronAddGame(props) {
           value={game_url}
           onChange={(e) => setGame_url(e.target.value)}
         />
-        <label>Linked In:</label>
+        <label>LinkedIn:</label>
         <input
           type="text"
           name="linkedin"
