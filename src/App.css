@@ -18,19 +18,24 @@
   margin-top: 10%;
 
   color: var(--buttons);
-  /* background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e);
- */
+  background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-html {
-  /* background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e); 
+
+html{
+  background-image: linear-gradient(to left bottom, #1c0067, #001566, #002060, #002758, #0a2c4e);
+  background-attachment: fixed;  
   background-repeat: no-repeat;
-  */
-  height: 100%;
-  width: 100%;
+  background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 
 body {
+    
+
   background-image: linear-gradient(
     to left bottom,
     #1c0067,
@@ -39,9 +44,11 @@ body {
     #002758,
     #0a2c4e
   );
-  color: var(--buttons);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
   background-size: cover;
+  color: var(--buttons);
+
   width: 100%;
   height: 100%;
 }
@@ -71,21 +78,13 @@ body {
   max-width: 100rem;
 }
 
-/* .aside{
-  width: auto;
-  height: auto;
-  margin-left: 0.6rem;
-  overflow: auto;
-} */
 
 .games-div {
   border: 0px solid black;
   width: 100%;
   margin-right: 0.1rem;
   max-height: 1000px;
-  /*   overflow-y: scroll;
- */ /*   overflow-x: hidden;
- */
+
 }
 
 .genre-link {
@@ -97,11 +96,7 @@ body {
   height: 3rem;
 }
 
-/* .game-list {
-    overflow-y: scroll;
-  overflow-x: hidden;
 
-} */
 
 .brand-icon {
   max-width: 3rem;
@@ -1118,3 +1113,14 @@ hr{
 .social{
   font-size: 1.2rem;
 }
+
+.homepage{
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../src/assets/images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-top: -4rem;
+}
+
