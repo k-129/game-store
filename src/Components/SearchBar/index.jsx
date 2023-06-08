@@ -8,7 +8,6 @@ const SearchBar = ({ setSearchQuery, totalGames }) => {
 
   return (
     <div>
-      <h2>Search Games</h2>
       <div className="search-bar">
         <input
           className="searchBar"

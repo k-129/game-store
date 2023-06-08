@@ -40,6 +40,7 @@ const gameInfo = async () => {
         )}
         <div>
                 <Link className="btn btn-warning back-btn" to="/games">Back to Games</Link>
+                
                 {user && user.admin &&
                 <Link className="btn btn-warning edit-btn" to={`/games/edit/${gameId}`}>Edit Game</Link>
                 }

@@ -860,6 +860,8 @@ cursor: pointer;}
   margin: 1rem;
 }
 
+
+/*Game details*/
 .game-page{
   margin: 2rem;
   display: flex;
@@ -878,8 +880,11 @@ cursor: pointer;}
   outline: 3px solid var(--buttons);
   border-radius: 10px;
   max-width: 800px;
-  height: 500px;
+  width: auto;
+  height: 550px;
   max-height: 800px;
+  margin: 1.5rem;
+  padding: 4rem;
 
 }
 
@@ -889,7 +894,7 @@ cursor: pointer;}
 
 .game-title{
   font-family: var(--main-font);
-  font-size: 4rem;
+  font-size: 3.5rem;
   letter-spacing: 3px;
 }
 
@@ -909,3 +914,9 @@ cursor: pointer;}
   margin: 1rem;
 }
 
+.ih-game-title{
+  font-family: var(--main-font);
+  font-size: 3.5rem;
+  letter-spacing: 3px;
+  padding-top: 0;
+}

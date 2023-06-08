@@ -28,6 +28,7 @@ export default function IronGamesListPage() {
     <div className="game-list-page d-flex">
       <div className="games-div">
         <div className="games-list">
+        <h2 className="game-title"> Ironhack Students Games</h2>
           {fetching ? (
             <div className="d-flex justify-content-center m-2 mt-5 flex-wrap">
                     <div className="card placeholders m-2" aria-hidden="true">

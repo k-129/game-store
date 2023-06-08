@@ -24,20 +24,22 @@ export default function IronGameDetailsPage(props) {
   }, []);
 
   return (
-    <div className="d-flex flex-column">
+    <div className="game-page">
       {ironGameDetails && (
-        <div className="d-flex flex-column">
-          <h2>{ironGameDetails.title}</h2>
-          <img src={ironGameDetails.imgUrl} alt=""/>
-          <p>{ironGameDetails.description}</p>
+        <div className="game-info">
+          <h2 className="ih-game-title">{ironGameDetails.title}</h2>
+        <div className="game-container">
+          <img className="game-image" src={ironGameDetails.imgUrl} alt=""/>
+          <p className="game-description">{ironGameDetails.description}</p>
         </div>
+      </div>
       )}
-      {user && user.admin ? (
-        <Link to={`/ironhack/games/edit/${gameId}`}>Edit Game</Link>
-      ) : (
-        <p></p>
-      )}
-      <Link to="/ironhack/games">Back</Link>
+      <div>
+      <Link className="btn btn-warning back-btn" to="/ironhack/games">Back to Games</Link>
+      {user && user.admin &&
+        <Link className="btn btn-warning edit-btn" to={`/ironhack/games/edit/${gameId}`}>Edit Game</Link>
+      }
+      </div>
     </div>
   );
 }

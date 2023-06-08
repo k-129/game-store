@@ -122,6 +122,8 @@ export default function GamesListPage() {
   return (
     <div className="game-list-page d-flex">
       <div className="games-div">
+      <h2 className="game-title pb-3">Free-To-Play Games </h2>
+
         <div className="search">
           <SearchBar
             setSearchQuery={setSearchQuery}
