@@ -7,6 +7,7 @@ import chico from "../../assets/images/chico.png";
 export default function ProfilePage() {
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState(null);
+const pic ='https://res.cloudinary.com/ddruhfcq3/image/upload/v1683806116/movie-project/lgelmuytljncantxmjzd.jpg';
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -56,7 +57,7 @@ export default function ProfilePage() {
           <div className="picture-container">
             <img
               className="profile-pic"
-              src={userInfo.imgUrl}
+              src={userInfo.imgUrl.length >= 1 ? (userInfo.imgUrl):(pic)}
               alt="Your Image"
             />
           </div>

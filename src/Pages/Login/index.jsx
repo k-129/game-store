@@ -79,7 +79,7 @@ export default function LoginPage() {
               className="spinner-grow spinner-grow-sm "
               role="status"
               aria-hidden="true"></span>
-            Loggin In
+            Logging In
           </button>
             ):(
             <button className="signup-btn" type="submit">
