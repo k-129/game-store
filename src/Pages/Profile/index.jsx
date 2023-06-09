@@ -83,7 +83,7 @@ export default function ProfilePage() {
       </aside>
 
       <div className="bucket-list">
-        <h1 className="display-5">Favorite Games</h1>
+        <h1 className="display-5 fav-game">Favorite Games</h1>
         {userInfo &&
           userInfo.favGames.map((game) => (
             <div

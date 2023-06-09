@@ -136,7 +136,7 @@ function IronEditGamePage() {
 
         <div className="edit-games-btn">
           <button className="btn btn-danger delete-ih-loading-game-btn" onClick={deleteGame}>
-            Delete Game
+            Delete
           </button>
           {uploading ? (
             <button

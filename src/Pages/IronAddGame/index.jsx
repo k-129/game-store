@@ -125,9 +125,18 @@ export default function IronAddGame(props) {
 
         <input className="form-control" type="file" onChange={(e) => handleFileUpload(e)} />
         {uploading ? (
-          <p>Wait for the image to upload</p>
+          <button
+            className="btn btn-warning loading-game-btn"
+            type="button"
+            disabled>
+            <span
+              className="spinner-grow spinner-grow-sm "
+              role="status"
+              aria-hidden="true"></span>
+            Loading...
+          </button>
         ) : (
-          <button type="submit">Add Game</button>
+          <button type="submit" className="btn btn-warning edit-game-btn">Add Game</button>
         )}
         </div>
       </form>
