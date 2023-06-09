@@ -41,7 +41,11 @@ export default function ProfilePage() {
   };
 
   if (!userInfo) {
-    return <div>Loading...</div>;
+    return (
+      <div class="spinner-border text-white" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+      );
   }
 
   return (

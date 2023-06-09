@@ -68,53 +68,70 @@ export default function IronAddGame(props) {
 
   return (
     <div className="edit-game-page">
+    
+
       <h3>Add New Game</h3>
 
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
+      <form className="add-game-form" onSubmit={handleSubmit}>
+      <div>
+        <label className="form-label edit">Title</label>
+        <input className="form-control"
           type="text"
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label>Description:</label>
-        <textarea
+        </div>
+        <div>
+
+        <label className="form-label edit">Description</label>
+        <textarea className="form-control"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-
-        <label>Game URL:</label>
-        <input
+        </div>
+        <div>
+        <label className="form-label edit">Game URL</label>
+        <input className="form-control"
           type="text"
           name="game_url"
           value={game_url}
           onChange={(e) => setGame_url(e.target.value)}
         />
-        <label>LinkedIn:</label>
-        <input
+        </div>
+        <div>
+        <label className="form-label edit">LinkedIn</label>
+        <input className="form-control"
           type="text"
           name="linkedin"
           value={linkedin}
           onChange={(e) => setLinkedin(e.target.value)}
         />
-        <label>GitHub:</label>
-        <input
+        </div>
+        <div>
+        <label className="form-label edit">GitHub</label>
+        <input className="form-control"
           type="text"
           name="github"
           value={github}
           onChange={(e) => setGithub(e.target.value)}
         />
-        <label>Image:</label>
+        </div>
+        <div>
 
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
+        
+        <label className="form-label edit">Image</label>
+
+        <input className="form-control" type="file" onChange={(e) => handleFileUpload(e)} />
         {uploading ? (
           <p>Wait for the image to upload</p>
         ) : (
           <button type="submit">Add Game</button>
         )}
+        </div>
       </form>
-    </div>
+      </div>
+
   );
 }

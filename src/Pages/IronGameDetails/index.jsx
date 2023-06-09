@@ -26,11 +26,11 @@ export default function IronGameDetailsPage(props) {
   return (
     <div className="game-page">
       {ironGameDetails && (
-        <div className="game-info">
+        <div className="game-info game-info-ih">
           <h2 className="ih-game-title">{ironGameDetails.title}</h2>
       
         <div className="game-container">
-          <img className="game-image" src={ironGameDetails.imgUrl} alt=""/>
+          <img className="game-image game-image-ih" src={ironGameDetails.imgUrl} alt=""/>
           <p className="game-description">{ironGameDetails.description}</p>
         </div>
         <div className="main-info2">
