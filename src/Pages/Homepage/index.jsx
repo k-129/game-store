@@ -11,6 +11,12 @@ export default function HomePage() {
   }, []);
   return (
     <div className='homepage disable-scroll'>
+    <div className="home-text">
+      <h1 className="home-title">Level Up Your Fun! Unleash Gaming Adventures at Game Store</h1>
+    </div>
+    <div className="home-btn">
+      <button className="btn btn-warning go-for-it"> Go for it!</button>
+    </div>
     </div>
   )
 }
