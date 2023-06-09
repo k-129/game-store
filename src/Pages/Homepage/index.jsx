@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 export default function HomePage() {
   useEffect(() => {
     // Disable scrolling on mount
@@ -15,7 +17,9 @@ export default function HomePage() {
       <h1 className="home-title">Level Up Your Fun! Unleash Gaming Adventures at Game Store</h1>
     </div>
     <div className="home-btn">
+    <Link to={`/games`}>
       <button className="btn btn-warning go-for-it"> Go for it!</button>
+      </Link>
     </div>
     </div>
   )
