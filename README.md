@@ -40,13 +40,13 @@ Search platform for gamers and enthusiasts find games, know more about games and
 | ---------- | ---------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
 | `GET`      | `/`                                | Main page route.  Renders home `index` view.                 |                                                          |
 | `GET`      | `/login`                           | Renders `login` form view.                                   |                                                          |
-| `POST`     | `/login`                           | Sends Login form data to the server.                         | { email, password }                                      |
+| `POST`     | `/login`                           | Sends Login form data to the server.                         |                                      |
 | `GET`      | `/signup`                          | Renders `signup` form view.                                  |                                                          |
-| `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DB. | { firstName, lastName, email, password  }                                    |
+| `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DB. |                                   |
 | `GET`      | `/private/edit-profile`            | Private route. Renders `edit-profile` form view.             |                                                          |
-| `POST`      | `/private/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. | { email, password, [firstName], [lastName], [imageUrl] } |
+| `POST`      | `/private/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. |  |
 | `GET`      | `/private/favorites`               | Private route. Render the `favorites` view.                  |                                                          |
-| `POST`     | `/private/favorites/`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, }                                                                         |
+| `POST`     | `/private/favorites/`              | Private route. Adds a new favorite for the current user.     |                                                                          |
 | `GET`      | `/games`                     | Renders `games-list` view.                              |                                                          |
 | `GET`      | `/games/details/:id`         | Renders `games-details` view for the beaches. |                                                          |
 | `POST`      | `/games/details/:id`         | Sends edit games info to the server and updates the game in the DB. |                                                          |
